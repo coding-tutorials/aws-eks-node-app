@@ -1,8 +1,11 @@
-before_install:
- - docker build -t awseksapp:0.0.1 .
-script:
-  - docker run --rm  awseksapp:0.0.1 npm test
-env:
-  - HTTP_PORT=3001
 services:
   - docker
+env:
+  - DOCKER_IMAGE_NAME=awseksapp:0.0.1
+before_install:
+ - docker build -t $DOCKER_IMAGE_NAME .
+script:
+  - docker run --rm  $DOCKER_IMAGE_NAME npm test
+after_success:
+  - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+  - docker push $DOCKER_IMAGE_NAME
