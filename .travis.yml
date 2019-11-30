@@ -1,8 +1,10 @@
 language: node_js
 node_js: "10"
-install:
-  - npm install
+before_install:
+ - docker build -t awseksapp:0.0.1 .
 script:
-  - npm test
+  - docker run --rm  awseksapp:0.0.1 npm test
 env:
   - HTTP_PORT=3001
+services:
+  - docker
