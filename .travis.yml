@@ -1,7 +1,7 @@
 services:
   - docker
 env:
-  - DOCKER_IMAGE_NAME=awseksapp:0.0.1
+  - DOCKER_IMAGE_NAME=leonardiwagner/awseksapp:0.0.1
 before_install:
  - docker build -t $DOCKER_IMAGE_NAME .
 script:
