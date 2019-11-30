@@ -11,7 +11,8 @@ app.get('/consume', (request, response) => {
     response.send({
       initDate,
       finishDate,
-      response: 'OK'
+      response: 'OK',
+      version: '0.0.1'
     })
     console.info('[consume] response sent')
   }, 5000)
