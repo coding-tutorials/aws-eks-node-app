@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 
 app.get('/consume', (request, response) => {
-  console.info('[consume] received request')
+  console.info('[consumer] received request')
 
   const initDate = Date.now()
   setTimeout(() => {
@@ -14,11 +14,11 @@ app.get('/consume', (request, response) => {
       response: 'OK',
       version: '0.0.1'
     })
-    console.info('[consume] response sent')
+    console.info('[consumer] response sent')
   }, 5000)
 })
 
 const port = process.env.HTTP_PORT
 app.listen(port, () => {
-  console.info(`listening at: ${port}`)
+  console.info(`[consumer] listening at: ${port}`)
 })
