@@ -10,8 +10,8 @@ before_install:
  - docker build -t $DOCKER_PRODUCER_NAME app-consumer/
  - docker build -t $DOCKER_CONSUMER_NAME app-producer/
 script:
-  - docker run --rm $DOCKER_PRODUCER_NAME npm test
-  - docker run --rm $DOCKER_CONSUMER_NAME npm test
+  - docker run --rm $DOCKER_PRODUCER_NAME npm i && npm test
+  - docker run --rm $DOCKER_CONSUMER_NAME npm i && npm test
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
   - docker push $DOCKER_PRODUCER_NAME
