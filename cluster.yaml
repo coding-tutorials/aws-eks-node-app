@@ -1,0 +1,32 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: my-cluster
+  region: us-west-2
+vpc:
+  id: "vpc-0b0c506f8f9e0740c"
+  subnets:
+    public:
+      subnet-a:
+        id: "subnet-04a9b61bab093bee3"
+      subnet-b:
+        id: "subnet-0daabd205819be277"
+
+nodeGroups:
+  - name: ng-1
+    instanceType: t3a.small
+    minSize: 1
+    maxSize: 1
+    desiredCapacity: 1
+    volumeSize: 8
+    volumeType: gp2
+    availabilityZones: ["us-west-2a", "us-west-2b"]
+    amiFamily: AmazonLinux2
+    securityGroups:
+      withShared: true
+      withLocal: true
+      attachIDs: ["sg-0b394f6de03f4190b"]
+    ssh:
+      allow: true
+      publicKeyName: 'default-key-pair'

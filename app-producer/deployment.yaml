@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-producer
+spec:
+  replicas: 2 #same number of nodes
+  selector:
+    matchLabels:
+      app: app-producer
+  template:
+    metadata:
+      labels:
+        app: app-producer
+    spec:
+      containers:
+        - name: app-producer
+          image: leonardiwagner/app-producer:0.0.1
+          command: ["npm", "start"]
+          env:
+            - name: HTTP_PORT
+              value: "3001"

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-consumer
+spec:
+  replicas: 1 #same number of nodes
+  selector:
+    matchLabels:
+      app: app-consumer
+  template:
+    metadata:
+      labels:
+        app: app-consumer
+    spec:
+      containers:
+        - name: app-consumer
+          image: leonardiwagner/app-consumer:0.0.1
+          command: ["npm", "start"]
+          env:
+            - name: HTTP_PORT
+              value: 3003
+          ports:
+            - containerPort: $(HTTP_PORT)

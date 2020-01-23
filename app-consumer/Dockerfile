@@ -1,11 +1,12 @@
 FROM node:13-alpine
 
-ENV HTTP_PORT 3001
+ARG HTTP_PORT
+ENV HTTP_PORT $HTTP_PORT
 
-RUN mkdir /app
-WORKDIR /app
-COPY . /app
+RUN mkdir /app-consumer
+WORKDIR /app-consumer
+COPY . /app-consumer
 
 RUN npm install
 
-EXPOSE 3001
+EXPOSE "$HTTP_PORT"
