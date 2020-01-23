@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: app-producer
-          image: leonardiwagner/app-producer:0.0.1
+          image: leonardiwagner/eks-producer:0.0.1
           command: ["npm", "start"]
           env:
             - name: HTTP_PORT

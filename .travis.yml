@@ -7,8 +7,8 @@ env:
 before_install:
  - ls
  - echo $DOCKER_PRODUCER_NAME
- - docker build -t $DOCKER_PRODUCER_NAME app-consumer/
- - docker build -t $DOCKER_CONSUMER_NAME app-producer/
+ - docker build -t $DOCKER_PRODUCER_NAME app-producer/
+ - docker build -t $DOCKER_CONSUMER_NAME app-consumer/
 script:
   - docker run --rm $DOCKER_PRODUCER_NAME sh -c "npm i && npm test"
   - docker run --rm $DOCKER_CONSUMER_NAME sh -c "npm i && npm test"

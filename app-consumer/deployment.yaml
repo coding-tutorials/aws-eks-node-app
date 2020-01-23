@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: app-consumer
-          image: leonardiwagner/app-consumer:0.0.1
+          image: leonardiwagner/eks-consumer:0.0.1
           command: ["npm", "start"]
           env:
             - name: HTTP_PORT

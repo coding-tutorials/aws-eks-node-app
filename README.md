@@ -17,3 +17,8 @@ Docker-compose is awesome to run locally and it may be run on the server as well
 Kubernetes is tool that does the docker-compose job, plus it scales (without having to touch servers) and manage failures (health) and zero downtime deployment
 
 kubectl apply -f app-producer/deployment.yaml 
+
+k8s will release automatically the new version of your software by switching old pods to new ones one by one with zero downtime without zero code :)
+
+kubectl get pods
+kubectl logs app-producer-7dbfc6c55d-2zpc7 
