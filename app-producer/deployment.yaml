@@ -1,21 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-producer
+  name: producer
 spec:
-  replicas: 2 #same number of nodes
+  replicas: 1 #same number of nodes
   selector:
     matchLabels:
-      app: app-producer
+      app: eks-app
+      tier: producer
   template:
     metadata:
       labels:
-        app: app-producer
+        app: eks-app
+        tier: producer
     spec:
       containers:
         - name: app-producer
           image: leonardiwagner/eks-producer:0.0.1
+          imagePullPolicy: Always
           command: ["npm", "start"]
           env:
-            - name: HTTP_PORT
-              value: "3001"
+            - name: CONSUMER_ADDRESS
+              value: "http://consumer:3003"

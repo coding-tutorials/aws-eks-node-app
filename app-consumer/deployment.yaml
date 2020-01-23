@@ -1,16 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-consumer
+  name: consumer
 spec:
   replicas: 1 #same number of nodes
   selector:
     matchLabels:
-      app: app-consumer
+      app: eks-app
+      tier: consumer
   template:
     metadata:
       labels:
-        app: app-consumer
+        app: eks-app
+        tier: consumer
     spec:
       containers:
         - name: app-consumer
@@ -18,6 +20,6 @@ spec:
           command: ["npm", "start"]
           env:
             - name: HTTP_PORT
-              value: 3003
+              value: "3003"
           ports:
-            - containerPort: $(HTTP_PORT)
+            - containerPort: 3003
