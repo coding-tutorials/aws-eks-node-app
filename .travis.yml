@@ -5,6 +5,8 @@ env:
     - DOCKER_PRODUCER_NAME=leonardiwagner/eks-producer:0.0.1
     - DOCKER_CONSUMER_NAME=leonardiwagner/eks-consumer:0.0.1
 before_install:
+ - ls
+ - echo $DOCKER_PRODUCER_NAME
  - docker build -t $DOCKER_PRODUCER_NAME app-consumer/
  - docker build -t $DOCKER_CONSUMER_NAME app-producer/
 script:
